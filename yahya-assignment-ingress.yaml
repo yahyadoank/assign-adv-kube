@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: yahya-assignment-ingress
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: yahya.assignment.apps.k3s.zauqilab.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: yahya-assignment-service
+            port:
+              number: 80

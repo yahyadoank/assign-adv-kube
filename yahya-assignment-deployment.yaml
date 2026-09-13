@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yahya-assignment-deployment
+  labels:
+    app: yahya-assignment-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: yahya-assignment-deployment
+  template:
+    metadata:
+      labels:
+        app: yahya-assignment-deployment
+    spec:
+      containers:
+        - name: yahya-assignment-deployment
+          image: haechanlovelove/assignment-color-app:v1
+          env:
+            - name: APP_COLOR
+              value: "#A0D9EF"
+          ports:
+            - containerPort: 5000
+          resources:
+            requests:
+              cpu: "150m"
+              memory: "20Mi"
+            limits:
+              cpu: "300m"
+              memory: "40Mi"
